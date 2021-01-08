@@ -10,10 +10,16 @@
 export default {
   name: "BookForm",
   props: ["books"],
-  data() {
+    data() {
     return {
       bookTitle: "",
       bookAuthor: ""
+      bookData: {
+        bookTitle: "",
+        bookAuthor: "",
+        finishedReading: false,
+        ownership: []
+      }
     };
   },
   methods: {
