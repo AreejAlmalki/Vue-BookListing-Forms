@@ -44,7 +44,7 @@ export default {
   computed: {
     filteredBooks() {
       return _.filter(this.books, ["ownership", this.holding]);
-    }
+    },
   methods: {
     appendBook(bookData ) {
       this.books.push({ title: bookData.bookTitle,
