@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>{{title}}</h1>
-    <ul>
+    <ul class="exists">
       <book-item v-for='book in books' :key='book.id' :book='book'></book-item>
-    </ul>
+    </ul>b
     <br><hr>
     <book-form @addBook='appendBook'></book-form>
   </div>
@@ -14,15 +14,26 @@ import BookItem from "./BookItem";
 import BookForm from "./BookForm";
 
 export default {
-  name: "BookList",
+   name: "BookList",
   data() {
     return {
       title: "All Books",
       states: ["Want to Read", "Read", "Reading"],
-      books: [
-        { title: "Self-Reliance", author: "Ralph Waldo Emerson" },
-        { title: "American Gods", author: "Neil Gaiman" },
-        { title: "Amusing Ourselves to Death", author: "Neil Postman" }
+      books:  {
+          title: "Self-Reliance",
+          author: "Ralph Waldo Emerson",
+          finishedReading: true
+        },
+        {
+          title: "American Gods",
+          author: "Neil Gaiman",
+          finishedReading: false
+        },
+        {
+          title: "Amusing Ourselves to Death",
+          author: "Neil Postman",
+          finishedReading: true
+        }
       ]
     };
   },
@@ -31,8 +42,12 @@ export default {
     BookForm
   },
   methods: {
-    appendBook(bookTitle, bookAuthor) {
-      this.books.push({ title: bookTitle, author: bookAuthor });
+    appendBook(bookData) {
+      this.books.push({
+        title: bookData.bookTitle,
+        author: bookData.bookAuthor,
+        finishedReading: bookData.finishedReading
+      });
     }
   }
 };
